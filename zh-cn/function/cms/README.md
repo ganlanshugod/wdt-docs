@@ -1,5 +1,21 @@
 最新更新 {docsify-updated}
 
+##### 组件下载
+
+你需要将svn地址wdt-frontend-element-ui下的所有项目全部下载到本地
+
+##### npm 安装
+
+首先需要在下载到本地的wdt-element-ui-ueditor-content目录下执行 npm install
+
+?> 推荐使用 npm 的方式安装，不建议使用 yarn 安装，`强烈建议不要直接使用 cnpm 安装，会有各种诡异的 bug`
+
+然后在你需要该组件的项目根目录(即package.json存在的目录)下执行：
+
+```
+npm install ../wdt-element-ui-ueditor-content
+```
+
 ## 在项目中引入内容相关组件
 
 你可以引入整个内容组件，或是根据需要仅引入部分组件。我们先介绍如何引入完整的内容组件
