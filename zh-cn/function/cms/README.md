@@ -8,7 +8,7 @@
 
 首先需要在下载到本地的wdt-element-ui-ueditor-content目录下执行 npm install
 
-?> 推荐使用 npm 的方式安装，不建议使用 yarn 安装，`强烈建议不要直接使用 cnpm 安装，会有各种诡异的 bug`
+?> 推荐使用 npm 的方式安装，不建议使用 yarn 安装，`强烈建议不要直接使用 cnpm 安装，可能会有各种诡异 bug`
 
 然后在你需要该组件的项目根目录(即package.json存在的目录)下执行：
 
@@ -33,7 +33,7 @@ Vue.use(contentPlugin)
 
 ##### 按需引入
 
-你可以只引入需要的组件，以达到减小项目体积的目的。比如 ContentPageDialog 组件，只需要在需要的地方写入如下内容：
+你可以只引入需要的组件。比如 ContentPageDialog 组件，只需要在需要的地方写入如下内容：
 
 ```
 import Vue from 'vue'
