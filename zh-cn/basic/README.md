@@ -2,7 +2,7 @@
 
 最新更新 {docsify-updated}
 
-> A magical documentation site generator.
+> A magical documentation site generator. 新鞋的内容
 
 ## What it is
 
