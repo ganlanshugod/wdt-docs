@@ -43,13 +43,13 @@ Vue.use(contentPlugin.ContentPageDialog)
 
 ## 内容列表组件 - ContentManage
 
-包含内容列表全部增删改查功能的列表组件
+默认包含内容列表全部增删改查功能的列表组件
 
 ##### 先看效果
 
 ![logo](../../../_media/contentPageList.png)
 
-##### 组件demo
+##### 再看代码
 
 ```
 <ContentManage
@@ -67,7 +67,7 @@ Vue.use(contentPlugin.ContentPageDialog)
     <el-button type="primary" size="mini" @click="click(row)">操作1</el-button>
     <el-button type="primary" size="mini" @click="click(row)">操作2</el-button>
   </template>
-</>
+</ContentManage>
 ```
 
 ##### 组件的属性列表
@@ -119,3 +119,94 @@ _id: "5d76177928b6e9667b53503c"
 | ---- | ---- | ------ |
 |  fun-button    |   搜索栏左侧自定义操作按钮   | 无 |
 |  operatorbtn   |   列表行右侧自定义操作按钮   |    行对象,参考`附录1 `    |
+
+
+
+## 内容列表弹窗组建 - ContentPageDialog
+
+
+包含基本查询功能的内容列表弹窗，可自定义功能
+
+##### 先看效果
+
+![logo](../../../_media/ContentPageDialog.png)
+
+##### 再看代码
+
+```
+<ContentPageDialog
+  v-model="showDialog"
+  title="内容列表"
+  show-tab-selection
+  fun-column-min-width="180px"
+  :tab-sel-list="['5d76177928b6e9667b53503c', '5d527cad32ef473f50129c2e']"
+  @table-selection-change="selChange"
+>
+  <!-- 弹窗上部按钮插槽 -->
+  <template #tab-fun-button>
+    <el-button>添加</el-button>
+  </template>
+  <!-- 内容table操作列插槽 -->
+  <template #tab-ope-btn="{ row }">
+    <el-button type="primary" size="mini" @click="click(row)">操作</el-button>
+    <el-button type="primary" size="mini" @click="click(row)">操作2</el-button>
+  </template>
+  <!-- dialog底部插槽 -->
+  <template #footer>
+    <el-button @click="showDialog = false">关闭</el-button>
+    <el-button type="primary" @click="showDialog = false">提交</el-button>
+  </template>
+</ContentPageDialog>
+```
+
+##### 组件的属性列表
+
+|          属性          |    类型     |  默认值 |            说明              |
+| ---------------------- | -------------- | ---------- | ----------------------------|
+|   value    |   Boolean |   false    |    是否显示弹窗     |
+|   title           |   String  |   内容列表  |    弹窗标题       |
+|   paramTypeCode    |   String / Array |   ''    |    栏目编码或编码数组，只查询传入栏目数据，若为String，默认搜索条件不显示栏目，若为Array，则搜索条件只允许选择传入的栏目       |
+|   showTabSelection     |   Boolean  |   false |    是否显示表格左侧复选框     |
+|   funColumnMinWidth    |   String   |   330px |  表格右侧操作列最小宽度，方便自定义操作按钮时进行自定义宽度 |
+|    tabSelList          |   Array    |   []    |  默认选中内容行_id列表        |
+
+##### 组件的事件列表
+
+| 事件 | 触发条件 | 参数内容 |
+| ---- | ---- | ------ |
+|  table-selection-change    |   选中或取消选中行时触发事件   |  选中行对象列表,参考`附录1 `  |
+
+##### 附录1：选中行对象示例(只作参考，实际对象属性根据栏目配置字段而定)
+
+```
+{
+content: "<p>111</p>",
+cover_img: ["5d7617b828b6e9667b535043"],
+create_by: "5cbec36de944b2236ce406c9",
+create_date: 1568020345985,
+del_flag: false,
+hot_flag: "0",
+lat: "36.139839",
+lng: "120.406881",
+namespace: "vtsc",
+recommend_flag: "1",
+show_map: "0",
+sort: 9999,
+status: "1",
+title: "附件测试数据",
+type_code: "10",
+update_by: "5cbec36de944b2236ce406c9",
+update_date: 1568717624416,
+video: ["5d76176728b6e9667b535036", "5d76177028b6e9667b535039"],
+zoom: 1,
+_id: "5d76177928b6e9667b53503c"
+}
+```
+
+##### 插槽
+
+| 事件 | 触发条件 | 参数内容 |
+| ---- | ---- | ------ |
+|  fun-button    |   搜索栏左侧自定义操作按钮   | 无 |
+|  tab-ope-btn   |   列表行右侧自定义操作按钮   |    行对象,参考`附录1 `    |
+|  footer    |   弹窗按钮操作区的内容   | 无 |
