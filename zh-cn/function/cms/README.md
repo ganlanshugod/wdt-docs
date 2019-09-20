@@ -73,7 +73,9 @@ Vue.use(contentPlugin.ContentPageDialog)
 ##### 组件的属性列表
 
 |          属性          |    类型     |  默认值 |            说明              |
-| ---------------------- | ---------- | ------- | ----------------------------|
+| ---------------------- | -------------- | ---------- | ----------------------------|
+|   paramTypeCode    |   String / Array |   ''    |    栏目编码或编码数组，只查询传入栏目数据，若为String，默认搜索条件不显示栏目，若为Array，则搜索条件只允许选择传入的栏目       |
+|   showSearch           |   Boolean  |   true  |    是否显示顶部搜索条件       |
 |   showTabSelection     |   Boolean  |   false |    是否显示表格左侧复选框     |
 |   funColumnMinWidth    |   String   |   330px |  表格右侧操作列最小宽度，方便自定义操作按钮时进行自定义宽度 |
 |    tabSelList          |   Array    |   []    |  默认选中内容行_id列表        |
