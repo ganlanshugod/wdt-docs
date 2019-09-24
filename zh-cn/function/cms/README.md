@@ -109,7 +109,7 @@ export default {
 |   funColumnMinWidth    |   String   |   330px |  表格右侧操作列最小宽度，方便自定义操作按钮时进行自定义宽度 |
 |    tabSelList          |   Array    |   []    |  默认选中内容行_id列表        |
 |    outUrl          |   String    |   ''    |  列表请求url，若传入此参数，则会覆盖原有请求url        |
-|    outParam          |   Object    |   {}    |  列表请求参数，若传入此参数，则会覆盖原有请求参数,`注意：不需要传入分页参数`        |
+|    outParam          |   Object    |   {}    |  列表请求参数，若传入outUrl,则完全替换原有请求参数，若不传outUrl,则会覆盖原有请求参数中存在的属性,`注意：不需要传入分页参数`        |
 |    outExpObj          |   Object    |   {}    |  展开行需要额外展示的数据，数据结构参考`附录2`   |
 
 ##### 组件的事件列表
@@ -216,6 +216,8 @@ _id: "5d76177928b6e9667b53503c"
 |   showTabSelection     |   Boolean  |   false |    是否显示表格左侧复选框     |
 |   funColumnMinWidth    |   String   |   330px |  表格右侧操作列最小宽度，方便自定义操作按钮时进行自定义宽度 |
 |    tabSelList          |   Array    |   []    |  默认选中内容行_id列表        |
+|    outUrl          |   String    |   ''    |  列表请求url，若传入此参数，则会覆盖原有请求url        |
+|    outParam          |   Object    |   {}    |  列表请求参数，若传入outUrl,则完全替换原有请求参数，若不传outUrl,则会覆盖原有请求参数中存在的属性,`注意：不需要传入分页参数`        |
 
 ##### 组件的事件列表
 
