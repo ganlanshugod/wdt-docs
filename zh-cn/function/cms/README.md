@@ -54,20 +54,49 @@ Vue.use(contentPlugin.ContentPageDialog)
 ```
 <ContentManage
   fun-column-min-width="330px"
-  show-tab-selection
+  :param-type-code="'tssClient'"
+  :show-tab-selection="false"
   :tab-sel-list="['5d76177928b6e9667b53503c', '5d527cad32ef473f50129c2e']"
+  :out-exp-obj="outExpObj"
   @table-selection-change="selChange"
+  @table-expand-change="tabExpandChange"
 >
   <!-- 搜索栏左侧按钮插槽 -->
   <template #fun-button>
-    <el-button>添加</el-button>
+    <el-button type="primary">添加啊啊</el-button>
   </template>
-  <!-- 列表行右侧自定义操作按钮插槽 -->
+  <!-- 内容table操作列插槽 -->
   <template #operatorbtn="{ row }">
-    <el-button type="primary" size="mini" @click="click(row)">操作1</el-button>
+    <el-button type="primary" size="mini" @click="click(row)">操作</el-button>
     <el-button type="primary" size="mini" @click="click(row)">操作2</el-button>
   </template>
 </ContentManage>
+
+<script>
+export default {
+  data() {
+    return {
+      outExpObj: {}
+    }
+  },
+  methods: {
+    selChange(val) {
+      console.log('upload selChange', val)
+    },
+    tabExpandChange(row, expand) {
+      if (expand && expand.length) {
+        this.outExpObj[row._id] = [
+          {
+            label: '设备名称',
+            value: row._id
+          }
+        ]
+      }
+    }
+  }
+}
+</script>
+
 ```
 
 ##### 组件的属性列表
@@ -79,12 +108,16 @@ Vue.use(contentPlugin.ContentPageDialog)
 |   showTabSelection     |   Boolean  |   false |    是否显示表格左侧复选框     |
 |   funColumnMinWidth    |   String   |   330px |  表格右侧操作列最小宽度，方便自定义操作按钮时进行自定义宽度 |
 |    tabSelList          |   Array    |   []    |  默认选中内容行_id列表        |
+|    outUrl          |   String    |   ''    |  列表请求url        |
+|    outParam          |   Object    |   {}    |  列表请求参数,`注意：不需要传入分页参数`        |
+|    outExpObj          |   Object    |   {}    |  展开行需要额外展示的数据，数据结构参考`附录2`   |
 
 ##### 组件的事件列表
 
 | 事件 | 触发条件 | 参数内容 |
 | ---- | ---- | ------ |
-|  table-selection-change    |   选中或取消选中行时触发事件   |  选中行对象列表,参考`附录1 `  |
+|  table-selection-change    |   选中或取消选中行时触发事件   |  选中行对象,参考`附录1 `  |
+|  table-expand-change    |   当对某一行展开或关闭时触发事件   |  参数1：行对象,参考`附录1 `；参数2：展开行列表，一般根据这个参数判断是展开还是关闭  |
 
 ##### 附录1：选中行对象示例(只作参考，实际对象属性根据栏目配置字段而定)
 
@@ -110,6 +143,20 @@ update_date: 1568717624416,
 video: ["5d76176728b6e9667b535036", "5d76177028b6e9667b535039"],
 zoom: 1,
 _id: "5d76177928b6e9667b53503c"
+}
+```
+
+##### 附录2：展开行需要额外展示的数据(请严格按照以下数据格式，否则可能会导致展示异常)
+
+```
+// {行_id: 额外展示数据数组}
+{
+5d76176728b6e9667b535036: [
+    {
+      label: '所属组织', // 展示标题
+      value: '全部终端' // 展示内容
+    }
+  ]
 }
 ```
 
@@ -174,7 +221,7 @@ _id: "5d76177928b6e9667b53503c"
 
 | 事件 | 触发条件 | 参数内容 |
 | ---- | ---- | ------ |
-|  table-selection-change    |   选中或取消选中行时触发事件   |  选中行对象列表,参考`附录1 `  |
+|  table-selection-change    |   选中或取消选中行时触发事件   |  选中行对象,参考`附录1 `  |
 
 ##### 附录1：选中行对象示例(只作参考，实际对象属性根据栏目配置字段而定)
 
