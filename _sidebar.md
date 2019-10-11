@@ -6,6 +6,7 @@
 
 * 功能组件
   * [内容发布](/zh-cn/function/cms/)
+  * [本地资源管理](/zh-cn/function/resourceManage/)
 
 * 产品使用
   * [内容建站](/zh-cn/production/cms)
