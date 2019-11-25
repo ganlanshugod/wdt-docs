@@ -8,7 +8,7 @@
 
 首先需要在下载到本地的wdt-element-ui-ueditor-content目录下执行 npm install
 
-?> 推荐使用 npm 的方式安装，不建议使用 yarn 安装，`强烈建议不要直接使用 cnpm 安装，可能会有各种诡异 bug`
+?> 推荐使用 npm 的方式安装，`强烈建议不要直接使用 cnpm 安装，可能会有各种诡异 bug`
 
 然后在你需要该组件的项目根目录(即package.json存在的目录)下执行：
 
@@ -111,6 +111,7 @@ export default {
 |    outUrl          |   String    |   ''    |  列表请求url，若传入此参数，则会覆盖原有请求url        |
 |    outParam          |   Object    |   {}    |  列表请求参数，若传入outUrl,则完全替换原有请求参数，若不传outUrl,则会覆盖原有请求参数中存在的属性,`注意：不需要传入分页参数`        |
 |    outExpObj          |   Object    |   {}    |  展开行需要额外展示的数据，数据结构参考`附录2`   |
+|    showOperation      |   Boolean    |   false    |  是否显示组件原操作按钮。只有有自定义操作按钮插槽时起作用   |
 
 ##### 组件的事件列表
 
